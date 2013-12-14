@@ -1,0 +1,21 @@
+	(list of things to do)
+
+#################################################
+#	About the Git configuration		#
+#################################################
+
+- ignoring some file extentions .h264 .jpg .pyc
+	The Glob pattern is available in Git, so
+	it's possible to use *.[jJ][pP][gG]
+
+
+
+
+#################################################
+#	About the TriggerCamera project		#
+#################################################
+
+- adding licence term at the top of each source file
+
+- create a configuration file system for mapping 
+	potentiometer its functionality
