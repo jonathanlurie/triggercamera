@@ -4,7 +4,7 @@
 #	About the Git configuration		#
 #################################################
 
-- ignoring some file extentions .h264 .jpg .pyc
+- [DONE] ignoring some file extentions .h264 .jpg .pyc
 	The Glob pattern is available in Git, so
 	it's possible to use *.[jJ][pP][gG]
 
