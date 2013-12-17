@@ -1,0 +1,68 @@
+<!--
+
+The puspose of this xml document is to list all the features available
+for tuning the Trigger Camera's side potentiometers.
+The list may contain a list bigger than the number of potentiometers,
+meaning the Trigger Cam will not use all of them.
+
+Conventions:
+1- not using capital letter, except for the description section.
+
+-->
+<features>
+	<feature>
+		<name>
+			brightness
+		</name>
+		<default_value>
+			0
+		</default_value>
+		<min_value>
+			0
+		</min_value>
+		<max_value>
+			100
+		</max_value>
+		<description>
+			Change the brightness of the image, does not influence the shutter speed.
+		</description>
+	</feature>
+
+	<feature>
+		<name>
+			saturation
+		</name>
+		<default_value>
+			0
+		</default_value>
+		<min_value>
+			-100
+		</min_value>
+		<max_value>
+			100
+		</max_value>
+		<description>
+			Change the color saturation of the image, -100 is grey levels and +100 is way too much colorfull.
+		</description>
+	</feature>
+
+	<feature>
+		<name>
+			contrast
+		</name>
+		<default_value>
+			0
+		</default_value>
+		<min_value>
+			-100
+		</min_value>
+		<max_value>
+			100
+		</max_value>
+		<description>
+			Change the contrast of the image.
+		</description>
+	</feature>
+
+
+</features>
