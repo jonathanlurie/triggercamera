@@ -14,13 +14,17 @@ class FileNaming:
 	m_lastVideoIndex = None
 	
 	def __init__(self):
-		self.m_outputFolder = "/home/pi/projects/camcorder/output/"
+		self.m_outputFolder = "/home/pi/projects/triggerOutput/"
 		self.m_picturePrefix = "piPict_"
 		self.m_videoPrefix = "piVid_"
 		self.m_pictureExt = ".jpg"
 		self.m_videoExt = ".h264"
 		self.m_nextPictureIndex = -1
 		self.m_nextVideoIndex = -1
+		
+		# preparing the next file names
+		self.defineNextPictureIndex()
+		self.defineNextVideoIndex()
 		
 		
 	# parse the "output" folder and look for the last filename that matched the pattern.

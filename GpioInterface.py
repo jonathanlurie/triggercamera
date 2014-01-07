@@ -88,6 +88,7 @@ class GpioInterface:
 		# for testing, not used
 		GPIO.setup(24, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
+
 	def setCameraCtrl(self, cam):
 		self.m_cameraCtrl = cam
 
@@ -116,6 +117,7 @@ class GpioInterface:
 			
 			
 	# _________________________________________________________________________________________ BUTTON IO 18
+	# Recording: launch or stop
 
 	# BUTTON 18
 	# when the BUTTON 18 is pressed
@@ -126,6 +128,7 @@ class GpioInterface:
 	# when the BUTTON 18 is released
 	def button18_onRelease(self, channel):
 		print "BUTTON 18: port 18 button released! (rising edge)"
+		self.m_cameraCtrl.switchRecordingOnOff()
 
 	# BUTTON 18
 	# callback for both release AND press action.
@@ -139,6 +142,7 @@ class GpioInterface:
 			
 			
 	# _________________________________________________________________________________________ BUTTON IO 27
+	# Preview: activate or deactivate
 
 	# BUTTON 27
 	# when the BUTTON 27 is pressed
@@ -149,6 +153,7 @@ class GpioInterface:
 	# when the BUTTON 27 is released
 	def button27_onRelease(self, channel):
 		print "BUTTON 27: port 27 button released! (rising edge)"
+		self.m_cameraCtrl.switchPreviewOnOff()
 
 	# BUTTON 27
 	# callback for both release AND press action.
@@ -161,12 +166,14 @@ class GpioInterface:
 			self.button27_onPress(channel)
 			
 	
-	# _________________________________________________________________________________________ BUTTON IO 27
+	# _________________________________________________________________________________________ BUTTON IO 4 
+	# Pot Reading
 
 	# BUTTON 4
 	# when the BUTTON 27 is pressed
 	def button4_onPress(self, channel):
 		print "BUTTON 4: port 4 button pressed! (falling edge)"
+		# Allow reading on potentiometers
 		self.m_openPotReading = True
 		self.endLessPotReading()
 
@@ -223,13 +230,26 @@ class GpioInterface:
 			saturationValue = self.changeScale(0, 1023, -100, 100, self.m_potsValues[0])
 			self.m_cameraCtrl.setCameraSaturation(saturationValue)
 			
-			# brightness pot: #0 interval [0;1023] -> [0; 100]
+			# brightness pot: #1interval [0;1023] -> [0; 100]
 			brightnessValue = self.changeScale(0, 1023, 0, 100, self.m_potsValues[1])
 			self.m_cameraCtrl.setCameraBrightness(brightnessValue)
 			
-			# contrast pot: #0 interval [0;1023] -> [-100; 100]
+			# contrast pot: #2 interval [0;1023] -> [-100; 100]
 			contrastValue = self.changeScale(0, 1023, -100, 100, self.m_potsValues[2])
 			self.m_cameraCtrl.setCameraContrast(contrastValue)
+			
+			# NOT WORKING
+			# ISO pot: #3 interval [0;1023] -> [0; 1600]
+			isoValue = self.changeScale(0, 1023, 0, 1600, self.m_potsValues[3])
+			self.m_cameraCtrl.setCameraISO(isoValue)
+			
+			# Shutter speed pot: #4 interval [0;1023] -> [1/2000; 1/30]
+			speedValue = self.changeScale(0, 1023,  (1/2000.)*1000000,(1/30.)*1000000, self.m_potsValues[4])
+			self.m_cameraCtrl.setCameraShutterSpeed(speedValue)
+			
+			# Expo compensation pot: #5 interval [0;1023] -> [-25; 25]
+			compValue = self.changeScale(0, 1023, -25, 25, self.m_potsValues[5])
+			self.m_cameraCtrl.setExpoCompensation(compValue)
 			
 			time.sleep(0.1)
 				
