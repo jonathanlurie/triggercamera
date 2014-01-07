@@ -3,6 +3,8 @@ from CameraControl import *
 from FileNaming import *
 
 
+# main
+
 if __name__ == "__main__":
 	try:
 		# create the file manager and init it
